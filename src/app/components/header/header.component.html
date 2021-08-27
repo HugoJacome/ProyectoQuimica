@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <!-- <span class="menu-spacer"></span> -->
+        <div>
+            <a mat-button [routerLink]="'/home'"> Inicio </a>
+            <a mat-button [routerLink]="'/songs'"> Canciones </a>
+            <a mat-button [routerLink]="'/stories'"> Historias </a>
+            <a mat-button [routerLink]="'/riddles'"> Adivinanzas </a>
+            <a mat-button [routerLink]="'/game'"> Juego </a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
