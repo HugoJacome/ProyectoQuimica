@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './components/home/home.component';
+import { YouTubePlayerModule } from "@angular/youtube-player";
+import { SelectionDialogComponent } from './components/riddles/selection-dialog/selection-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { HomeComponent } from './components/home/home.component';
     SongsComponent,
     HeaderComponent,
     HomeComponent,
+    SelectionDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatIconModule
+    MatIconModule,
+    YouTubePlayerModule
   ],
   exports:[
     MaterialModule

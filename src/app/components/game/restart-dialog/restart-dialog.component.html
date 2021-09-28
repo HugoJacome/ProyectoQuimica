@@ -1,7 +1,8 @@
 <h2 mat-dialog-title>Felicitaciones!</h2>
 <mat-dialog-content class="mat-typography">
-    Nivel Completado.
+    Nivel {{data.level}} Completado.
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Mezclar y Reiniciar</button>
+    <button *ngIf="data.level == 1 || data.level == 2" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Mezclar y Continuar</button>
+    <button *ngIf="data.level == 3" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Finalizar</button>
 </mat-dialog-actions>

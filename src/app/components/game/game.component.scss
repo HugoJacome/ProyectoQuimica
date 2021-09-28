@@ -33,10 +33,26 @@
 .container {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 .logo {
     width: 15%;
     img {
         width: 100%;
     }
+}
+.family-row {
+    display: table-cell;
+    width: 85%;
+}
+a {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
