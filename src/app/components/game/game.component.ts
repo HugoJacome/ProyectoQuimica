@@ -148,6 +148,9 @@ export class GameComponent implements OnInit {
 
   }
 
+  unselect(){
+    this.selected = false;
+  }
   setupCards(): void {
     this.cards = [];
     if (this.elements.length > 14) {

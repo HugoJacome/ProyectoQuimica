@@ -16,6 +16,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './components/home/home.component';
 import { YouTubePlayerModule } from "@angular/youtube-player";
 import { SelectionDialogComponent } from './components/riddles/selection-dialog/selection-dialog.component';
+import { GamesComponent } from './components/games/games.component';
+import { AnagramComponent } from './components/games/anagram/anagram.component';
+import { HangoutComponent } from './components/games/hangout/hangout.component';
+// import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,9 @@ import { SelectionDialogComponent } from './components/riddles/selection-dialog/
     HeaderComponent,
     HomeComponent,
     SelectionDialogComponent,
+    GamesComponent,
+    AnagramComponent,
+    HangoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,8 @@ import { SelectionDialogComponent } from './components/riddles/selection-dialog/
     BrowserAnimationsModule,
     MaterialModule,
     MatIconModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    // ReactiveFormsModule
   ],
   exports:[
     MaterialModule
