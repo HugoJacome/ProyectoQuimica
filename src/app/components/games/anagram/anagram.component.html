@@ -12,11 +12,12 @@
     <div class="row">
         <div class="column-bottom">
             <div class="input">
-                <form class="input-form">
+                <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" class="input-form">
                     <mat-form-field class="input-full-width" appearance="fill">
                         <mat-label>Escriba el elemento </mat-label>
-                        <input matInput>
+                        <input #element matInput formControlName="element">
                     </mat-form-field>
+                    <button mat-raised-button type="submit" [disabled]="myForm.invalid">Validar</button>
                 </form>
             </div>
         </div>
@@ -24,7 +25,9 @@
     <div class="row">
         <div class="column-bottom">
             <div class="word">
-                <button mat-raised-button (click)="validate()">Validar</button>
+                <span *ngIf="sended" [style.color]="success === true ? 'green': 'red'">
+                    {{result}}
+                </span>
             </div>
         </div>
     </div>

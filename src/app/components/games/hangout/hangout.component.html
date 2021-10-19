@@ -1,1 +1,34 @@
-<p>hangout works!</p>
+<div class="container background">
+    <div class="header">Ordene la palabra y adivine el elemento</div>
+    <div class="row">
+        <div class="column">
+            <div class="word">
+                <!-- <div class="letter" *ngFor="let letter of letters">
+                    <span class="lett">{{letter}}</span>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-bottom">
+            <div class="input">
+                <form class="input-form">
+                    <mat-form-field class="input-full-width" appearance="fill">
+                        <mat-label>Escriba el elemento </mat-label>
+                        <input matInput formControlName="element">
+                    </mat-form-field>
+                    <button mat-raised-button type="submit">Validar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-bottom">
+            <div class="word">
+                <span  [style.color]="true === true ? 'green': 'red'">
+                    correcto
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

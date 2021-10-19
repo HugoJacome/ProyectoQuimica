@@ -234,7 +234,8 @@ export class GameComponent implements OnInit {
         if (this.matchedCount === this.selectedElements.length) {
           const dialogRef = this.dialog.open(RestartDialogComponent, {
             data: {
-              level: this.level
+              level: this.level,
+              familySelected: this.familySelected
             },
             viewContainerRef: this.viewContainerRef,
             disableClose: true
@@ -254,6 +255,7 @@ export class GameComponent implements OnInit {
     this.matchedCount = 0;
     if (this.level == 4) {
       this.level = 1;
+      this.selected = false;
     }
     this.setupCards();
   }
@@ -263,6 +265,7 @@ export class GameComponent implements OnInit {
     } else {
       this.elements = this.elementsTotal;
     }
+    this.familySelected = family;
     this.selected = true;
     this.setupCards();
   }

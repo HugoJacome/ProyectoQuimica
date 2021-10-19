@@ -19,7 +19,8 @@ import { SelectionDialogComponent } from './components/riddles/selection-dialog/
 import { GamesComponent } from './components/games/games.component';
 import { AnagramComponent } from './components/games/anagram/anagram.component';
 import { HangoutComponent } from './components/games/hangout/hangout.component';
-// import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DialogResultComponent } from './components/games/dialog-result/dialog-result.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HangoutComponent } from './components/games/hangout/hangout.component';
     GamesComponent,
     AnagramComponent,
     HangoutComponent,
+    DialogResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import { HangoutComponent } from './components/games/hangout/hangout.component';
     MaterialModule,
     MatIconModule,
     YouTubePlayerModule,
-    // ReactiveFormsModule
+    ReactiveFormsModule
   ],
   exports:[
     MaterialModule

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-// import { FormControl } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogResultComponent } from '../dialog-result/dialog-result.component';
 
 @Component({
   selector: 'app-anagram',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./anagram.component.scss']
 })
 export class AnagramComponent implements OnInit {
+  @ViewChild("element") elementField: ElementRef;
+  constructor(private fb: FormBuilder,
+    private dialog: MatDialog,
+    private viewContainerRef: ViewContainerRef) {
 
-  letters: string[]; 
+  }
+  letters: string[];
   element: string;
+  message: string;
+  sended: boolean = false;
+  result: string;
+  level: number = 1;
+  words: number = 1;
+  elementsFiltered: string[];
+  success: boolean = false;
   elements: string[] = ['Hidrógeno',
     'Litio',
     'Sodio',
@@ -119,17 +133,74 @@ export class AnagramComponent implements OnInit {
     'Bohrio',
     'Hassio'
   ]
-  // elementInput = new FormControl('');
-  constructor() { }
-
+  myForm: FormGroup;
   ngOnInit(): void {
     this.randomElement();
+    this.myForm = this.fb.group({
+      element: ['', Validators.required],
+    });
   }
-  validate() {
-    // console.log(this.elementInput);
+  onSubmit(form: FormGroup) {
+    console.log('Valid?', form.valid); // true or false
+    console.log('Element', form.value.element);
+    console.log(this.element);
+    let element = form.value.element
+    element = element.toUpperCase();
+    if (element === this.element) {
+      this.result = 'CORRECTO NIVEL ' + this.level + ' PALABRA ' + this.words;
+      this.success = true;
+      this.message = 'Validar';
+      this.sended = true;
+      this.words += 1;
+      if (this.words === 6) {
+        const dialogRef = this.dialog.open(DialogResultComponent, {
+          data: {
+            level: this.level,
+          },
+          viewContainerRef: this.viewContainerRef,
+          disableClose: true
+        });
+
+        dialogRef.afterClosed().subscribe(() => {
+          this.level += 1;
+          this.randomElement();
+          this.sended = false;
+          this.words = 1;
+          this.myForm.controls['element'].setValue('');
+          this.elementField.nativeElement.focus();
+        });
+      } else {
+        this.randomElement();
+        this.myForm.controls['element'].setValue('');
+        this.elementField.nativeElement.focus();
+      }
+
+    } else {
+      this.result = 'INCORRECTO';
+      this.success = false;
+      this.message = 'Validar';
+      this.sended = true;
+      this.myForm.controls['element'].setValue('');
+    }
   }
   randomElement() {
-    this.element = this.elements[Math.floor(Math.random()*this.elements.length)].toUpperCase( );
+    if (this.level == 4) {
+      this.level = 1;
+    }
+    if (this.level == 1) {
+      this.elementsFiltered = this.elements.filter(x => x.length <= 5);
+      console.log(this.elementsFiltered);
+    }
+    if (this.level == 2) {
+      this.elementsFiltered = this.elements.filter(x => x.length > 5 && x.length <= 7);
+      console.log(this.elementsFiltered);
+    }
+    if (this.level == 3) {
+      this.elementsFiltered = this.elements.filter(x => x.length > 7);
+      console.log(this.elementsFiltered);
+    }
+
+    this.element = this.elementsFiltered[Math.floor(Math.random() * this.elementsFiltered.length)].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
     this.letters = this.shuffle(this.element.split(''));
   }
   shuffle(array) {
@@ -142,5 +213,8 @@ export class AnagramComponent implements OnInit {
       array[randomIndex] = temporaryValue;
     }
     return array;
+  }
+  ngAfterViewInit() {
+    this.elementField.nativeElement.focus();
   }
 }
