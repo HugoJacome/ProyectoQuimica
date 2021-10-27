@@ -14,6 +14,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './components/home/home.component';
+import { YouTubePlayerModule } from "@angular/youtube-player";
+import { SelectionDialogComponent } from './components/riddles/selection-dialog/selection-dialog.component';
+import { GamesComponent } from './components/games/games.component';
+import { AnagramComponent } from './components/games/anagram/anagram.component';
+import { HangoutComponent } from './components/games/hangout/hangout.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DialogResultComponent } from './components/games/dialog-result/dialog-result.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +33,11 @@ import { HomeComponent } from './components/home/home.component';
     SongsComponent,
     HeaderComponent,
     HomeComponent,
+    SelectionDialogComponent,
+    GamesComponent,
+    AnagramComponent,
+    HangoutComponent,
+    DialogResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +51,9 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatIconModule
+    MatIconModule,
+    YouTubePlayerModule,
+    ReactiveFormsModule
   ],
   exports:[
     MaterialModule

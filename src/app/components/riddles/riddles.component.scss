@@ -1,10 +1,12 @@
 .background {
     background-image: url("../../../assets/Backgound.jpg");
     background-size: cover;
-    min-height: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bolder;
+    line-height: normal;
 }
 .container {
     position: absolute;
@@ -14,7 +16,6 @@
     left: 0;
 }
 .header {
-    color: white;
     font-size: 35px;
     font-weight: bolder;
     padding-top: 25px;
@@ -22,4 +23,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+    height: 400px;
+    background-color: transparent;
+}
+ol.c {
+    list-style-type: upper-roman;
+}
+li {
+    padding: 5px 0px 10px 0px;
+}
+h1{
+    font-weight: bolder;
+    font-size: 40px;
+}
+.button-row{
+    justify-content: center;
 }

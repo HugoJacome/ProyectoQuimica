@@ -1,6 +1,6 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CardData } from 'src/app/models/card-data.model';
+import { ElementData } from 'src/app/models/card-data.model';
 
 @Component({
   selector: 'app-game-card',
@@ -33,7 +33,7 @@ import { CardData } from 'src/app/models/card-data.model';
 })
 export class GameCardComponent implements OnInit {
 
-  @Input() data: CardData;
+  @Input() data: ElementData;
 
   @Output() cardClicked = new EventEmitter();
 
