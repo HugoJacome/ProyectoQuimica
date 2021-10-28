@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>Felicitaciones!</h2>
 <mat-dialog-content class="mat-typography">
-    <span *ngIf="data.level !== 3">
+    <span *ngIf="(data.level == 3 && data.game == 2) || data.level != 5">
         Nivel {{data.level}} Completado.
     </span>
-    <div class="imagen" *ngIf="data.level === 3">
+    <div class="imagen" *ngIf="(data.level == 3 && data.game != 2) || data.level == 5">
         <img src="assets/medalla.png" alt="medalla">
         <span>
             Nivel {{data.level}} Completado.
@@ -11,6 +11,6 @@
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button *ngIf="data.level == 1 || data.level == 2" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Mezclar y Continuar</button>
-    <button *ngIf="data.level == 3" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Finalizar</button>
+    <button *ngIf="data.level == 1 || data.level == 2 || data.level == 4 || (data.level == 3 && data.game == 2)" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Continuar</button>
+    <button *ngIf="(data.level == 3 && data.game != 2) || data.level == 5" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Finalizar</button>
 </mat-dialog-actions>
